@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Anders Bälter
+	email = anders@84codes.com
+[difftool]
+	prompt = false
+[core]
+	editor = vim
+	excludesfile = /Users/anders/.gitignore_global
