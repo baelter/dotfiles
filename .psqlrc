@@ -1,0 +1,7 @@
+\x auto
+\pset pager off
+\pset null '(null)'
+\set COMP_KEYWORD_CASE lower
+\pset border 2
+\pset linestyle unicode
+\pset unicode_header_linestyle double
