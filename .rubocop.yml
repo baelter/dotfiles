@@ -41,7 +41,7 @@ Style/BracesAroundHashParameters:
   Enabled: false
 
 Style/ClassVars:
-  Enabled: true
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -80,4 +80,8 @@ Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Performance rules
+Performance/RedundantMerge:
   Enabled: false
