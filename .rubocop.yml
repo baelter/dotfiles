@@ -31,6 +31,12 @@ Metrics/AbcSize:
   Max: 20
 
 # Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
 Style/AlignParameters:
   Enabled: true
 
