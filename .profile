@@ -33,3 +33,5 @@ export PATH=$PATH:/usr/local/sbin
 #oh-my-zsh
 plugins+=(zsh-completions)
 autoload -U compinit && compinit
+
+export PATH=$PATH:$HOME/.bin
