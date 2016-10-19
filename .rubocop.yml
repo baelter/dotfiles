@@ -28,7 +28,7 @@ Metrics/LineLength:
     - https
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 25
 
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/AsciiComments:
