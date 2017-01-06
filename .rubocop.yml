@@ -28,7 +28,10 @@ Metrics/LineLength:
     - https
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 40
+
+Metrics/CyclomaticComplexity:
+  Max: 8
 
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/AsciiComments:
