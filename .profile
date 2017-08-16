@@ -5,9 +5,17 @@ ulimit -n 10000
 
 # Ruby
 eval "$(rbenv init -)"
+RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
+export RBENV_ROOT=$HOME/.rbenv
 
 # Git
 alias git=hub
+gpp() {
+  git push origin && git push heroku
+}
+gppl() {
+  gpp && heroku logs -t
+}
 
 # iTerm
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
@@ -30,9 +38,28 @@ export LC_ALL=
 # Brew
 export PATH=$PATH:/usr/local/sbin
 
-#oh-my-zsh
+# oh-my-zsh
 plugins+=(zsh-completions)
 autoload -U compinit && compinit
 
-#User bin
+# User bin
 export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:$HOME/Projects/tools/bin
+
+# Work
+ptl() {
+  open https://papertrailapp.com/systems/$(basename $PWD)/events
+}
+
+heroku_psql() {
+  psql $(URL=$(heroku config:get ELEPHANTSQL_URL); if [ -z $URL ]; then heroku config:get DATABASE_URL; else echo $URL; fi)
+}
+
+dev_psql() {
+  psql $(grep '\(ELEPHANTSQL_URL\|DATABASE_URL\)' .env | awk -F= '{print $2}' | sed "s/'//g" | head -n1)
+}
+
+product() {
+  cd `pwd | sed -Ee "s/\/[a-z]+\-/\/$1-/"`
+}
+export HIST_STAMPS='yyyy-mm-dd'

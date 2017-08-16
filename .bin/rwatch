@@ -3,7 +3,7 @@ set -e
 declare -a git_gems
 git_gems=()
 bundle show | awk '/^* (.*) \(.* .*\)/ { print $2; }' | while read line ; do git_gems+=($line) ; done
-cmd="rerun --pattern '{**/*.{rb,ru,json,txt,scss,sass},Gemfile,Gemfile.lock,Rakefile,*.gemspec}' --dir '."
+cmd="rerun -s SIGUSR2 --pattern '{**/*.{rb,ru,json,txt,scss,sass},Gemfile,Gemfile.lock,Rakefile,*.gemspec,.env}' --dir '."
 for i in "${git_gems[@]}"; do
   gem_path=$(bundle show "$i")
   cmd+=",$gem_path"
