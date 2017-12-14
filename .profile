@@ -41,6 +41,7 @@ export PATH=$PATH:/usr/local/sbin
 # oh-my-zsh
 plugins+=(zsh-completions)
 autoload -U compinit && compinit
+zstyle ':completion:*' ignored-patterns 'heroics-generate|heroku-api'
 
 # User bin
 export PATH=$PATH:$HOME/.bin
@@ -51,15 +52,19 @@ ptl() {
   open https://papertrailapp.com/systems/$(basename $PWD)/events
 }
 
-heroku_psql() {
+hkpsql() {
   psql $(URL=$(heroku config:get ELEPHANTSQL_URL); if [ -z $URL ]; then heroku config:get DATABASE_URL; else echo $URL; fi)
 }
 
-dev_psql() {
+devpsql() {
   psql $(grep '\(ELEPHANTSQL_URL\|DATABASE_URL\)' .env | awk -F= '{print $2}' | sed "s/'//g" | head -n1)
 }
 
-product() {
-  cd `pwd | sed -Ee "s/\/[a-z]+\-/\/$1-/"`
-}
-export HIST_STAMPS='yyyy-mm-dd'
+export PATH=$PATH:/usr/local/bin
+autoload bashcompinit && bashcompinit
+source '/usr/local/lib/azure-cli/az.completion'
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+ssh-add -A &>/dev/null

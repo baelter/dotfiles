@@ -8,6 +8,6 @@ for i in "${git_gems[@]}"; do
   gem_path=$(bundle show "$i")
   cmd+=",$gem_path"
 done
-cmd+="' foreman start"
+cmd+="' heroku local"
 echo $cmd
 eval $cmd
