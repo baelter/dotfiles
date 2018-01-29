@@ -1,3 +1,7 @@
+# don't put duplicate lines or lines starting with space in the  history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
 # Go
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
@@ -38,11 +42,6 @@ export LC_ALL=
 # Brew
 export PATH=$PATH:/usr/local/sbin
 
-# oh-my-zsh
-plugins+=(zsh-completions)
-autoload -U compinit && compinit
-zstyle ':completion:*' ignored-patterns 'heroics-generate|heroku-api'
-
 # User bin
 export PATH=$PATH:$HOME/.bin
 export PATH=$PATH:$HOME/Projects/tools/bin
@@ -51,17 +50,26 @@ export PATH=$PATH:$HOME/Projects/tools/bin
 ptl() {
   open https://papertrailapp.com/systems/$(basename $PWD)/events
 }
-
 hkpsql() {
   psql $(URL=$(heroku config:get ELEPHANTSQL_URL); if [ -z $URL ]; then heroku config:get DATABASE_URL; else echo $URL; fi)
 }
-
 devpsql() {
   psql $(grep '\(ELEPHANTSQL_URL\|DATABASE_URL\)' .env | awk -F= '{print $2}' | sed "s/'//g" | head -n1)
 }
+testport4() {
+  nc -4vz $*
+}
+testport6() {
+  nc -6vz $*
+}
+testssl4() {
+  openssl s_client -showcerts -4 -connect $* </dev/null
+}
+testssl6() {
+  openssl s_client -showcerts -6 -connect $* </dev/null
+}
 
 export PATH=$PATH:/usr/local/bin
-autoload bashcompinit && bashcompinit
 source '/usr/local/lib/azure-cli/az.completion'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
