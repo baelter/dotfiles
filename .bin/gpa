@@ -1,0 +1,9 @@
+#!/bin/bash
+l3=`comm -12 <(bundle config | grep 'local\.' | awk -F '.' '{print $2}' | sort -u) <(bundle show | awk '{print $2}' | sort -u)`
+for i in $l3; do
+  (
+    cd "../${i//_/-}"
+    git pull
+  )
+done
+git pull
