@@ -1,5 +1,6 @@
 #!/bin/bash
 l3=`comm -12 <(bundle config | grep 'local\.' | awk -F '.' '{print $2}' | sort -u) <(bundle show | awk '{print $2}' | sort -u)`
+git checkout -- Gemfile.lock
 for i in $l3; do
   (
     cd "../${i//_/-}"
