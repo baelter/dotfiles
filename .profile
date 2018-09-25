@@ -9,7 +9,7 @@ ulimit -n 10000
 
 # Ruby
 eval "$(rbenv init -)"
-RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
+# RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
 export RBENV_ROOT=$HOME/.rbenv
 
 # Git
@@ -37,10 +37,12 @@ export LC_MESSAGES="en_US.UTF-8"
 export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
-export LC_ALL=
+export LC_ALL="en_US.UTF-8"
+
 
 # Brew
 export PATH=$PATH:/usr/local/sbin
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 # User bin
 export PATH=$PATH:$HOME/.bin
