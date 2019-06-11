@@ -5,7 +5,7 @@ HISTCONTROL=ignoreboth
 # Go
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
-ulimit -n 10000
+ulimit -n 65536
 
 # Ruby
 eval "$(rbenv init -)"
@@ -81,3 +81,5 @@ fi
 export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
 # ssh-add -A &>/dev/null
+
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
