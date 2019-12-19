@@ -8,10 +8,6 @@ for i in "${git_gems[@]}"; do
   gem_path=$(bundle show "$i")
   cmd+=",$gem_path"
 done
-if [[ -f config.ru ]]; then
-  cmd+="' foreman start web"
-else
-  cmd+="' foreman start worker"
-fi
+cmd+="' 'foreman start -m all=1,release=0'"
 echo $cmd
 eval $cmd
