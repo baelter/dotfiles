@@ -23,4 +23,4 @@ set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 set autoindent		" always set autoindenting on
 set undofile " tell it to use an undo file
 set undodir=~/.vimundo " set a directory to store the undo history
-:set mouse=a
+set mouse=r

@@ -3,9 +3,9 @@
 HISTCONTROL=ignoreboth
 
 # Go
-export GOPATH=$HOME/Projects/go
+export GOPATH=$HOME/84codes/go
 export PATH=$PATH:$GOPATH/bin
-ulimit -n 65536
+# ulimit -n 65536
 
 # Ruby
 eval "$(rbenv init -)"
@@ -46,7 +46,7 @@ export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 # User bin
 export PATH=$PATH:$HOME/.bin
-export PATH=$PATH:$HOME/Projects/tools/bin
+export PATH=$PATH:$HOME/84codes/tools/bin
 
 # Work
 ptl() {
@@ -83,3 +83,18 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
 # ssh-add -A &>/dev/null
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+gam() { "/Users/anders/Applications/gam/gam" "$@" ; }
+
+# Python
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/anders/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anders/Applications/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/anders/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anders/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+
+export SIGN_SSH_KEY_RESET_AGENT=true
