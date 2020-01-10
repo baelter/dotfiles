@@ -1,5 +1,5 @@
 #!/bin/bash
-if show=$(bundle show); then
+if show=$(bundle list); then
   l1=$(echo "$show" | awk '{print $2}')
 else
 echo "$show"
