@@ -2,6 +2,9 @@
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+unsetopt correct_all  
+setopt correct
+
 # Go
 export GOPATH=$HOME/84codes/go
 export PATH=$PATH:$GOPATH/bin
@@ -84,11 +87,11 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-gam() { "/Users/anders/Applications/gam/gam" "$@" ; }
-
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -98,3 +101,13 @@ if [ -f '/Users/anders/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/U
 if [ -f '/Users/anders/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anders/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
 export SIGN_SSH_KEY_RESET_AGENT=true
+
+export PATH=$PATH:/Users/anders/code/connectiq-sdk/bin
+
+eval $(thefuck --alias)
+
+
+function gam() { "/Users/anders/Applications/gam/gam/gam" "$@" ; }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

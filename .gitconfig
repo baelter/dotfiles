@@ -3,6 +3,7 @@
 # Please adapt and uncomment the following lines:
 	name = Anders Bälter
 	email = anders@84codes.com
+	signingkey = FF143F4E6E352BB1
 [difftool]
 	prompt = false
 [core]
@@ -23,3 +24,11 @@
 [merge "keepMine"]
 	name = always keep mine during merge
 	driver = keepMine.sh %O %A %B
+[alias]
+	prune-branches = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
+[pull]
+	rebase = true
+[commit]
+	verbose = true
+[rebase]
+	autostash = true

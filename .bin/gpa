@@ -1,4 +1,5 @@
 #!/bin/bash
+bundle
 if show=$(bundle list); then
   l1=$(echo "$show" | awk '{print $2}')
 else
@@ -25,3 +26,4 @@ for i in $l3; do
 done
 git checkout -- Gemfile.lock
 update
+bundle
